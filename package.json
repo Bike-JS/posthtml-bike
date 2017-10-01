@@ -1,6 +1,6 @@
 {
   "name": "posthtml-bike",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PostHTML plugin for transform custom tags to BEM methodology",
   "main": "dist/index.js",
   "directories": {
