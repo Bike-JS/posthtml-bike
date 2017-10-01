@@ -6,7 +6,7 @@ This plugin transform custom tags to BEM-like HTML
 
 ### Install
 ```
-npm i -D posthtml-bile
+npm i -D posthtml-bike
 ```
 
 ### Usage

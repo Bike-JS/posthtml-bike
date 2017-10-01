@@ -25,7 +25,6 @@ var AUTO_TAGS = exports.AUTO_TAGS = {
 var AUTO_CLASSES = exports.AUTO_CLASSES = {
   li: function li(_ref) {
     var component = _ref.component;
-
     return component.elem + '-item';
   },
   a: function a(_ref2) {
@@ -65,7 +64,7 @@ var classWithMods = function classWithMods(block, elem, mods) {
 exports.default = function () {
   var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_OPTIONS;
 
-  options = Object.assign(DEFAULT_OPTIONS, options);
+  options = Object.assign({}, DEFAULT_OPTIONS, options);
 
   return function (tree) {
     var process = function process(node, parent) {
@@ -105,7 +104,7 @@ exports.default = function () {
         var elemName = node.tag;
 
         if (options.autoClasses[node.tag] !== undefined) {
-          elemName = options.autoClasses[node.tag](parent) || node.tag;
+          elemName = options.autoClasses[node.tag](parent, options) || node.tag;
         }
 
         node.attrs.class = classWithMods(parent.component.name, elemName, mods);
