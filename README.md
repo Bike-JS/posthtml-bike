@@ -1,15 +1,15 @@
-## Bike plugin
+# Bike plugin
 
 [![Build](https://travis-ci.org/Satanpit/posthtml-bike.svg?branch=master)](https://travis-ci.org/Satanpit/posthtml-bike)
 
 This plugin transform custom tags to BEM-like HTML
 
-### Install
+## Install
 ```
 npm i -D posthtml-bike
 ```
 
-### Usage
+## Usage
 
 ```javascript
 const { readFileSync } = require('fs');
@@ -21,7 +21,7 @@ const html = readFileSync('index.html');
 posthtml([ bike() ]).process(html).then((result) => console.log(result.html));
 ```
 
-### Example
+## Example
 
 ```html
 <component name="example">
@@ -41,7 +41,7 @@ Transformed to:
 </section>
 ```
 
-### Options
+## Options
 
 ```javascript
 {
@@ -87,7 +87,7 @@ Transformed to:
 }
 ```
 
-#### Auto classes
+### Auto classes
 
 Example config for `li` tag,
 result class - `${componentName}__${parentElementName}-item`
