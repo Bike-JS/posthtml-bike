@@ -1,5 +1,7 @@
 ## Bike plugin
 
+[![Build](https://travis-ci.org/Satanpit/posthtml-bike.svg?branch=master)](https://travis-ci.org/Satanpit/posthtml-bike)
+
 This plugin transform custom tags to BEM-like HTML
 
 ### Install
