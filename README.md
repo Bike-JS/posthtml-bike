@@ -64,6 +64,12 @@ Transformed to:
     replaceElemTag: 'div',
     
     /**
+    * Skip HTML tags list
+    * @default
+    */
+    skipTags: ['b', 'strong', 'i', 'span', 'div', 'section'],
+    
+    /**
     * These elements will be replaced to defined HTML tags
     * @default
     */
@@ -120,8 +126,6 @@ Auto class function args:
 * `parent` - Parent node object
     * `component` - `{ name, elem, parent }` Custom item with plugin info
 * `options` - Plugin options
-
-If you need extend `autoTags` or `autoClasses` use constants `AUTO_TAGS` and `AUTO_CLASSES`
 
 For example:
 

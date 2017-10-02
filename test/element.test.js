@@ -92,3 +92,13 @@ test('Custom classes for elements from config', () => testOutput(
     }
   }
 ));
+
+test('Skip replace element config', () => testOutput(
+  `<component name="test">
+    <span></span>
+  </component>`,
+  `<section class="test">
+    <span></span>
+  </section>`,
+  { skipTags: ['span'] }
+));
