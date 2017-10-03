@@ -23,6 +23,8 @@ posthtml([ bike() ]).process(html).then((result) => console.log(result.html));
 
 ## Example
 
+### Default
+
 ```html
 <component name="example">
     <header></header>
@@ -39,6 +41,42 @@ Transformed to:
     <article class="example__main"></article>
     <footer class="example__footer"></footer>
 </section>
+```
+
+### With mods
+
+```html
+<component name="example" mod-theme="dark" mod-active>
+    <header></header>
+    <main mod-hidden></main>
+    <footer></footer>
+</component>
+```
+
+Transformed to:
+
+```html
+<section class="example example_theme_dark example_active">
+    <header class="example__header"></header>
+    <article class="example__main example__main_hidden"></article>
+    <footer class="example__footer"></footer>
+</section>
+```
+
+### With tag attr
+
+```html
+<component name="button" tag="button">
+    <main tag="span"></main>
+</component>
+```
+
+Transformed to:
+
+```html
+<button class="button">
+    <span class="button__main"></span>
+</button>
 ```
 
 ## Options
