@@ -1,6 +1,6 @@
 {
   "name": "posthtml-bike",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "PostHTML plugin for transform custom tags to BEM methodology",
   "main": "dist/index.js",
   "directories": {
@@ -21,6 +21,8 @@
     "gulp": "^3.9.1",
     "gulp-posthtml": "^3.0.0",
     "jest": "^21.2.1",
+    "postcss": "^6.0.13",
+    "postcss-bike": "^1.0.3",
     "posthtml": "^0.9.2"
   },
   "repository": {

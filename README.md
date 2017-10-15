@@ -1,6 +1,6 @@
 # Bike plugin
-
-[![Build](https://travis-ci.org/Satanpit/posthtml-bike.svg?branch=master)](https://travis-ci.org/Satanpit/posthtml-bike)
+[![NPM][https://img.shields.io/npm/v/posthtml-bike.svg?style=flat-square]][https://npmjs.com/package/posthtml-bike]
+[![Build](https://travis-ci.org/Satanpit/posthtml-bike.svg?style=flat-squar)](https://travis-ci.org/Satanpit/posthtml-bike)
 
 This plugin transform custom tags to BEM-like HTML
 
@@ -120,6 +120,7 @@ Transformed to:
         'list-item': 'li',
         link: 'a'
     },
+    
     /**
     * Config for generated custom element name by HTML tag
     * @default
@@ -128,7 +129,99 @@ Transformed to:
       li: () => {}, // Generate element name for `li` tag
       a: () => {}, // Generate element name for `a` tag
     },
+   
+    /**
+    * Config for process styles in component 
+    * @default
+    */
+    postcss: false,
 }
+```
+
+### Use with postcss-bike
+
+Example for use with [postcss-bike](https://github.com/Bike-JS/postcss-bike)
+
+```html
+<style type="text/postcss">
+    @component app {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+    
+      @elem header {
+        flex: 0 0 40px;
+      }
+    }
+</style>
+<component name="app" mod-theme="dark"></component>
+```
+
+Transformed to:
+
+```html
+<style type="text/css">
+    .app {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+    }
+    .app__header {
+      flex: 0 0 40px;
+    }
+</style>
+<section class="app app_theme_dark"></section>
+```
+
+#### Options
+
+```javascript
+{
+  postcss: {
+    match: 'text/postcss', // Match `style` tag by type
+    plugins: [], // Postcss plugins
+    process: (css, node) => { // Save processed css function
+      node.attrs.type = 'text/css';
+      node.content = ['\n', css];
+      return node;
+    }
+  }
+}
+```
+
+Example for save all components styles in one file:
+
+```javascript
+import { appendFileSync } from 'fs';
+import gulp from 'gulp';
+import gulpPosthtml from 'gulp-posthtml';
+import gulpClean from 'gulp-clean';
+
+import postCssBike from 'postcss-bike';
+
+gulp.task('clean', () => (
+  gulp.src('examples/dist/components.css').pipe(gulpClean())
+));
+
+gulp.task('html', ['clean'], () => {
+  gulp.src('/components/*.html')
+    .pipe(gulpPosthtml([
+      bike({
+        postcss: {
+          match: 'text/postcss',
+          plugins: [ postCssBike() ],
+          appendTo: '/dist/components.css',
+          process(css, node, options) {
+            appendFileSync(options.postcss.appendTo, css);
+            node.tag = false;
+            node.content = [''];
+            return node;
+          }
+        },
+      }),
+    ]))
+    .pipe(gulp.dest('/dist'))
+});
 ```
 
 ### Auto classes
