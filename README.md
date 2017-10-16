@@ -1,6 +1,6 @@
 # Bike plugin
 [![NPM](https://img.shields.io/npm/v/posthtml-bike.svg)](https://npmjs.com/package/posthtml-bike)
-[![Build](https://travis-ci.org/Bike-JS/postcss-bike.svg?branch=master)](https://travis-ci.org/Satanpit/posthtml-bike)
+[![Build](https://travis-ci.org/Bike-JS/posthtml-bike.svg?branch=master)](https://travis-ci.org/Bike-JS/posthtml-bike)
 
 This plugin transform custom tags to BEM-like HTML
 
